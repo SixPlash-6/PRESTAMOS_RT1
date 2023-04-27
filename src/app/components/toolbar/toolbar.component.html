@@ -6,14 +6,18 @@
 </div>
 <mat-toolbar color="primary">
     <!-- <span>My App</span> -->
-    <div class="example-button-row">
-        <button mat-raised-button>Informacion</button>
-        <button mat-raised-button>Servicios</button>
+    <div class="button-row">
+        <button mat-flat-button color="primary">
+            <p>Informacion
+        </button>
+        <button mat-flat-button color="primary">
+            <p>Servicios
+        </button>
     </div>
     <span class="example-spacer"></span>
     <div>
         <p>login
-            <button (click)=ingreso() mat-fab color="primary" aria-label="Example icon button with a home icon">
+            <button (click)="ingreso()" mat-fab color="primary">
                 <mat-icon>power_settings_new</mat-icon>
             </button>
     </div>

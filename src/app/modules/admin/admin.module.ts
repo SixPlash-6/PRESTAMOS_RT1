@@ -5,7 +5,7 @@ import { TabsAdminComponent } from './components/tabs-admin/tabs-admin.component
 import { GestionClientesComponent } from './components/gestion-clientes/gestion-clientes.component';
 import { ClientesService } from './service/clientes.service';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AgregarClientesComponent } from './components/agregar-clientes/agregar-clientes.component';
 
 
 
@@ -16,12 +16,14 @@ import { HttpClientModule } from '@angular/common/http';
     AdminComponent,
 
 
+
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     TabsAdminComponent,
-    GestionClientesComponent
+    GestionClientesComponent,
+    AgregarClientesComponent
   ],
   providers: [
     ClientesService

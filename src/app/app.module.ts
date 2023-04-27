@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,12 +21,15 @@ import { HttpClientModule } from '@angular/common/http';
 
 
   ],
-  imports: [HttpClientModule,
+  imports: [
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ToolbarComponent,
     LoginComponent,
     PerfilComponent,
+
+
   ],
   providers: [ClientesService],
   bootstrap: [AppComponent]

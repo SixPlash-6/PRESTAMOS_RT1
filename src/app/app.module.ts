@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +9,8 @@ import { LoginComponent } from './components';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { ClientesService } from './modules/admin/service/clientes.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './modules';
+
 
 
 
@@ -19,7 +21,6 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
 
-
   ],
   imports: [
     HttpClientModule,
@@ -28,7 +29,6 @@ import { HttpClientModule } from '@angular/common/http';
     ToolbarComponent,
     LoginComponent,
     PerfilComponent,
-
 
   ],
   providers: [ClientesService],

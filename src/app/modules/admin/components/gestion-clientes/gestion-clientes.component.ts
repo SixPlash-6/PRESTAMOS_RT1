@@ -4,9 +4,7 @@ import { Icliente } from '../../interfaces/Iclientes';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AgregarClientesComponent } from '../agregar-clientes/agregar-clientes.component';
-
-
-
+import { Router } from '@angular/router';
 
 
 
@@ -23,6 +21,7 @@ import { AgregarClientesComponent } from '../agregar-clientes/agregar-clientes.c
 
 export class GestionClientesComponent implements OnInit {
 
+  //Para visualizar formulario de agregar cliente
   activo = false;
   agregarCliente() {
     this.activo = true;
@@ -31,55 +30,60 @@ export class GestionClientesComponent implements OnInit {
   clientes: Icliente[] = []
   filtroClientes: Icliente[] = []
   serchValue = "";
-
-
+  clienteSeleccionado: Icliente | null = new Icliente();
 
   constructor(private clienteService: ClientesService) {
 
-  }
-  hayClientes() {
-    return this.clientes.length > 0
   }
 
   ngOnInit(): void {
     this.datosCliente()
   }
 
+  //Se llama al servicio getCliente para traer todos lo datos y asignarlo a (clientes)
   datosCliente() {
-    this.clienteService.getCliente().subscribe((datos) => {
+    this.clienteService.getClientes().subscribe((datos) => {
       this.clientes = [...datos]
       console.log(this.clientes)
       this.filtroClientes = [...datos]
     })
   }
 
-  // actualizarDatosCliente(clientes: Icliente) {
-  //   this.clienteService.actualizarCliente().subscribe((datos) => {
-  //     console.log(datos)
-  //   })
-  // }
 
-  // borrarDatosCliente(ParametoCliente: Icliente): void {
-  //   this.clienteService.borrarCliente(ParametoCliente.id).subscribe((datos) => {
-  //     console.log(datos)
-  //   })
+  editar(cliente: Icliente) {
+    this.activo = true;
+    this.clienteSeleccionado = { ...cliente };
 
-  // }
+  }
 
+  borrar(cliente: Icliente) {
+    this.clienteService.borrarCliente(cliente).subscribe((datos) => {
+      let d = datos;
+      console.log(d)
+      alert("Registro borrado con exito!")
+    })
+  }
+
+
+  //Comprobacione de datos en tabla
+  hayClientes() {
+    return this.clientes.length > 0
+  }
+
+  //Filtro tabla
   filtro() {
     if (!this.serchValue) {
       this.filtroClientes = this.clientes
       return
     }
     this.filtroClientes = this.clientes.filter((cliente) => {
-      if (cliente.nombre.toLocaleLowerCase().match(this.serchValue) || cliente.apellido.toLocaleLowerCase().match(this.serchValue)) {
+      if (cliente.nombre.toLocaleLowerCase().match(this.serchValue) || cliente.apellido.toLocaleLowerCase().match(this.serchValue)
+        || cliente.documento.toLocaleLowerCase().match(this.serchValue) || cliente.correo.toLocaleLowerCase().match(this.serchValue)
+        || cliente.telefono.toLocaleLowerCase().match(this.serchValue)) {
         return true
       }
       return false
     })
   }
-
-
-
 
 }

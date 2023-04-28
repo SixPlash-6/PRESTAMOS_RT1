@@ -6,6 +6,8 @@ import { GestionClientesComponent } from './components/gestion-clientes/gestion-
 import { ClientesService } from './service/clientes.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AgregarClientesComponent } from './components/agregar-clientes/agregar-clientes.component';
+import { GestionProductosComponent } from './components/gestion-productos';
+import { AgregarProductosComponent } from './components/agregar-productos';
 
 
 
@@ -17,13 +19,17 @@ import { AgregarClientesComponent } from './components/agregar-clientes/agregar-
 
 
 
+
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     TabsAdminComponent,
     GestionClientesComponent,
-    AgregarClientesComponent
+    AgregarClientesComponent,
+    GestionProductosComponent,
+    AgregarProductosComponent
+
   ],
   providers: [
     ClientesService

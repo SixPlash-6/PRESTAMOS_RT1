@@ -1,5 +1,5 @@
 export interface Icliente {
-    id: string | null,
+    id: number,
     nombre: string,
     apellido: string,
     documento: string,
@@ -10,7 +10,7 @@ export interface Icliente {
 }
 
 export class Icliente {
-    id: string | null = "";
+    id: number = 0;
     nombre: string = "";
     apellido: string = "";
     documento: string = "";

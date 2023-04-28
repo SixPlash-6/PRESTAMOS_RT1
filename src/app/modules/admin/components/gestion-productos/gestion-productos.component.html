@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>ADMINISTRACION DE PRODUCTOS</h3>
+            <div class="card-body">
+
+                <!--LLamada del componente agregar producto-->
+                <!--activacion del decorador--><!--producto pasa al hijo como productoseleccionado-->
+                <app-agregar-productos [refrescarTablaProductos]=" datosProducto"
+                    [productoSeleccionado]="productoSeleccionado" *ngIf="activo"></app-agregar-productos>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3 style="text-align: center;">TABLA PRODUCTOS</h3>
+        </div>
+        <div class="card-header">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                (click)="agregarProducto()">Agregar articulo</button>
+        </div>
+        <!--FILTRO TABLA-->
+        <div class="card-body">
+            <div class="container text-center mt-4">
+                <input class="form-control mt-2 mb-2" type="text" [(ngModel)]="serchValue" #ctrl="ngModel"
+                    (input)="filtro()" placeholder="Search by name" />
+                <!--TABLA-->
+                <table class="table table-bordered border-purple" *ngIf="hayProductos(); else sinProductos">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>CODIGO</th>
+                            <th>NOMBRE</th>
+                            <th>CATEGORIA</th>
+                            <th>SUBCATEGORIA</th>
+                            <th>PRECIO</th>
+                            <th>ACCIONES</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr *ngFor="let producto of filtroProductos">
+                            <td>{{producto.id}}</td>
+                            <td>{{producto.codigo}}</td>
+                            <td>{{producto.nombre}}</td>
+                            <td>{{producto.categoria}}</td>
+                            <td>{{producto.subcategoria}}</td>
+                            <td>{{producto.precio}}</td>
+                            <td>
+                                <button (click)="editar(producto)" class="btn btn-warning">Editar</button>
+                                <button (click)="borrar(producto)" class="btn btn-danger">Eliminar</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <ng-template #sinProductos>
+                    <p>No hay productos</p>
+                </ng-template>
+            </div>
+        </div>

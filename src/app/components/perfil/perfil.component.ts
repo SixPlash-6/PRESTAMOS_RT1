@@ -23,6 +23,9 @@ export class PerfilComponent implements OnInit {
 
   }
 
+  client() {
+    this.router.navigate(["client"])
+  }
   ngOnInit(): void {
 
   }

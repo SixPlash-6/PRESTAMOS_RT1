@@ -9,7 +9,11 @@ import { LoginComponent } from './components';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { ClientesService } from './modules/admin/service/clientes.service';
 import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './modules';
+import { MatDialog } from '@angular/material/dialog';
+
+
+
+
 
 
 
@@ -31,7 +35,7 @@ import { HomeComponent } from './modules';
     PerfilComponent,
 
   ],
-  providers: [ClientesService],
+  providers: [ClientesService, MatDialog],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

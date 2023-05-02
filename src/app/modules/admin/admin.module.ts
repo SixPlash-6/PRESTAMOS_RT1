@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AgregarClientesComponent } from './components/agregar-clientes/agregar-clientes.component';
 import { GestionProductosComponent } from './components/gestion-productos';
 import { AgregarProductosComponent } from './components/agregar-productos';
+import { GestionarPrestamosComponent } from './components/gestionar-prestamos/gestionar-prestamos.component';
 
 
 
@@ -15,7 +16,7 @@ import { AgregarProductosComponent } from './components/agregar-productos';
 
 @NgModule({
   declarations: [
-    AdminComponent,
+    AdminComponent
 
 
 
@@ -28,7 +29,8 @@ import { AgregarProductosComponent } from './components/agregar-productos';
     GestionClientesComponent,
     AgregarClientesComponent,
     GestionProductosComponent,
-    AgregarProductosComponent
+    AgregarProductosComponent,
+    GestionarPrestamosComponent,
 
   ],
   providers: [

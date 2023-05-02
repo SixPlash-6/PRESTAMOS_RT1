@@ -2,6 +2,7 @@ import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent, PerfilComponent } from './components';
 import { AdminComponent } from './modules';
+import { ClientComponent } from './modules/client/client.component';
 
 
 
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "perfil", component: PerfilComponent },
   { path: "admin", component: AdminComponent },
+  { path: "client", component: ClientComponent }
 
 
 

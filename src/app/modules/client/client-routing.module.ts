@@ -10,7 +10,7 @@ import { GestionarPrestamosComponent } from './components';
 const routes: Routes = [
   { path: "", component: ClientComponent },
   { path: "gestion-ventas", component: GestionVentasComponent },
-  { path: "gestionar-restamos", component: GestionarPrestamosComponent }
+  { path: "gestionar-prestamos", component: GestionarPrestamosComponent }
 
 
 ];

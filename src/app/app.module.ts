@@ -9,7 +9,12 @@ import { LoginComponent } from './components';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { ClientesService } from './modules/admin/service/clientes.service';
 import { HttpClientModule } from '@angular/common/http';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTabsModule } from '@angular/material/tabs';
+import { BrowserModule } from '@angular/platform-browser';
+
 
 
 
@@ -33,9 +38,14 @@ import { MatDialog } from '@angular/material/dialog';
     ToolbarComponent,
     LoginComponent,
     PerfilComponent,
+    MatDialogModule,
+    MatInputModule,
+    MatButtonModule,
+    MatTabsModule,
+    BrowserModule
 
   ],
-  providers: [ClientesService, MatDialog],
+  providers: [ClientesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

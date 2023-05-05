@@ -3,12 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
-import { Iproducto } from '../../interface/Iproductos';
-import { ProductosService } from '../../service/productos.service';
-
-
-
-
+import { Iventas } from '../../interface/Iventas';
+import { VentasServiceService } from '../../service/ventas.service.service';
+import { Iprestamos } from '../../interface/Iprestamos';
 
 
 
@@ -21,41 +18,45 @@ import { ProductosService } from '../../service/productos.service';
 export class GestionarPrestamosComponent implements OnInit {
 
   myControl = new FormControl('');
-  opcionesPrestamos: Iproducto[] = [];
+  opcionesPrestamos: Iprestamos[] = [];
+
 
   // @ts-ignore
-  filteredOptions: Observable<Iproducto[]>;
+  filteredOptions: Observable<Iprestamos[]>;
 
 
 
-  constructor(public dialog: MatDialog, private productoService: ProductosService) { }
+  constructor(public dialog: MatDialog, private ventasService: VentasServiceService) { }
 
   ngOnInit() {
-    this.productos();
+    this.prestamos();
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value || '')),
     );
+
+
   }
 
-  private _filter(value: string): Iproducto[] {
-    const filterValue = value.toLowerCase();
+  private _filter(value: string): Iprestamos[] {
+    const filtervalue = value.toLowerCase();
 
-    return this.opcionesPrestamos.filter(option => option.nombre.includes(filterValue));
+    return this.opcionesPrestamos.filter(option => option.item.toLocaleString(filtervalue));
   }
 
 
-  productos() {
-    this.productoService.getProductos().subscribe((datos) => {
+  prestamos() {
+    return this.ventasService.getPrestamos().subscribe((datos) => {
       this.opcionesPrestamos = datos;
     })
-
   }
+
 
   Ok() {
 
     console.log(this.myControl.value)
 
   }
+
 
 }

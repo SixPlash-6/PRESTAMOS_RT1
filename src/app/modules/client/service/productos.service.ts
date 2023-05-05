@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Iproducto } from '../interfaces/Iproductos';
-import { Rproducto } from '../interfaces/Rproducto';
+import { Iproducto } from '../interface/Iproductos';
+import { Rproducto } from '../interface/Rproducto';
 
 
 @Injectable({

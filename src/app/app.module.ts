@@ -14,6 +14,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 
 
 
@@ -42,7 +44,10 @@ import { BrowserModule } from '@angular/platform-browser';
     MatInputModule,
     MatButtonModule,
     MatTabsModule,
-    BrowserModule
+    BrowserModule,
+    MatAutocompleteModule
+
+
 
   ],
   providers: [ClientesService],

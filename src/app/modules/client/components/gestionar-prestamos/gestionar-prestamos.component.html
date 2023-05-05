@@ -1,7 +1,21 @@
 <!--FORMULARIO MODAL-->
 
 <h1 mat-dialog-title>Dialog with elements</h1>
-<div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
+<div mat-dialog-content>
+    <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Number</mat-label>
+            <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
+                name="nombre" [matAutocomplete]="auto">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option.nombre">
+                    {{option.nombre}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>
+</div>
 <div mat-dialog-actions>
     <button mat-button mat-dialog-close>Close</button>
+    <button mat-button [mat-dialog-close]="myControl.value" cdkFocusInitial (click)="Ok()">Ok</button>
 </div>

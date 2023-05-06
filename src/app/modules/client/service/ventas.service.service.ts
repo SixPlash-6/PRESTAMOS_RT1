@@ -15,8 +15,8 @@ export class VentasServiceService {
   url = "http://127.0.0.1:5000";
 
 
-  getPrestamos() {
-    return this.http.get<Iprestamos[]>(this.url + "/solicitudes")
+  getPrestamos(id:number) {
+    return this.http.get<Iprestamos[]>(this.url + "/consultar/solicitud/"+id)
   }
 
   // getPrestamosId() {

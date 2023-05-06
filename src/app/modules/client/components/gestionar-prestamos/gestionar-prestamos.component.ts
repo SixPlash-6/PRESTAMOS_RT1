@@ -46,7 +46,7 @@ export class GestionarPrestamosComponent implements OnInit {
 
 
   prestamos() {
-    return this.ventasService.getPrestamos().subscribe((datos) => {
+    return this.ventasService.getPrestamos(1).subscribe((datos) => {
       this.opcionesPrestamos = datos;
     })
   }

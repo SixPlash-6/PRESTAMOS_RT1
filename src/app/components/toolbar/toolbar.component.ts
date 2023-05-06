@@ -7,8 +7,6 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  standalone: true,
-  imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule],
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.css']

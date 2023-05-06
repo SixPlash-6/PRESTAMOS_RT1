@@ -4,8 +4,6 @@ import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
 
 @Component({
-  standalone: true,
-  imports: [MatGridListModule, MatCardModule],
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.css']

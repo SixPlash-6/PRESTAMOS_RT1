@@ -1,17 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { HttpClient } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { Icliente } from 'src/app/modules/admin/interfaces/Iclientes';
-import { Iusuarios } from '../interface';
-
-
-
+import { NgForm } from '@angular/forms';
+import { VentasServiceService } from 'src/app/modules/client/service/ventas.service.service';
+import { Ilogin } from './Ilogin';
 
 
 
@@ -21,34 +13,38 @@ import { Iusuarios } from '../interface';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  user: string = '';
-  password: string = '';
 
-  constructor(private http: HttpClient, private router: Router) { }
+
+  perfil = {} as Ilogin;
+
+  constructor(private http: HttpClient, private router: Router, private ventaService: VentasServiceService) { }
 
   ngOnInit() {
+
   }
 
-  login() {
-    this.http.post<Iusuarios>('http://127.0.0.1:5000/Login', { usuario: this.user, password: this.password })
-      .subscribe(response => {
-        if (this.user == response.Usuario && this.password == response.password) {
-          const perfil = response.Perfil
-          // Redirigir a diferentes páginas según el perfil
-          if (perfil === 1) {
-            this.router.navigate(['admin']);
-          } else if (perfil === 2) {
-            this.router.navigate(['usuario']);
-          } else {
-            alert('Perfil no válido');
-          }
-          
+  login(form: NgForm) {
+    const user = form.value.user
+    const password = form.value.password
+    console.log(user, password)
+
+    return this.ventaService.getLogin(user, password).subscribe(datos => {
+      this.perfil = datos;
+      if (user == datos.Usuario && password == datos.password) {
+        if (this.perfil.Perfil === 1) {
+          this.router.navigate(["client"]);
+        } else if (this.perfil.Perfil) {
+          this.router.navigate(["admin"]);
+        } else {
+          alert("Perfil no valido");
         }
-        console.log(response)
-         
-      }, error => {
-        alert('Inicio de Sesión Fallido');
-        console.log(error);
-      });
+      }
+    }, error => {
+      alert("Inicio de sesion fallido");
+      console.log(error);
+    });
+
   }
+
+
 }

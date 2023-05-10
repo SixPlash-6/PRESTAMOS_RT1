@@ -7,6 +7,9 @@ export interface Ilogin {
     Correo: string,
     Perfil: number,
     password: string,
+    token: string,
+    status: string
+
 
 }
 

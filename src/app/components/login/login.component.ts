@@ -30,10 +30,13 @@ export class LoginComponent implements OnInit {
 
     return this.ventaService.getLogin(user, password).subscribe(datos => {
       this.perfil = datos;
-      if (user == datos.Usuario && password == datos.password) {
-        if (this.perfil.Perfil === 1) {
+      console.log(this.perfil)
+      if (this.perfil.status == "ok") {
+        localStorage.setItem("token", this.perfil.token)
+
+        if (this.perfil.Perfil === 2) {
           this.router.navigate(["client"]);
-        } else if (this.perfil.Perfil) {
+        } else if (this.perfil.Perfil == 1) {
           this.router.navigate(["admin"]);
         } else {
           alert("Perfil no valido");

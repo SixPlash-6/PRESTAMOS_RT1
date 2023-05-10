@@ -1,9 +1,9 @@
 export interface Iprestamos {
     solicitudId: number,
-    userId: number,
-    itemId: number,
-    fechaSolicitud: Date | null,
-    estadoId: number,
+    usuario: number,
+    item: number,
+    fecha: Date | null,
+    estado: number,
     observacion: string,
 
 }

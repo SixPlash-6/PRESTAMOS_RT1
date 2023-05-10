@@ -11,11 +11,11 @@ export class ProductosService {
 
   constructor(private http: HttpClient) { }
 
-  url = "http://localhost:5000/";
+  url = "http://127.0.0.1:5000";
 
   //Servicio trae todos los productos
   getProductos() {
-    return this.http.get<Iproducto[]>(this.url + "consultar_productos");
+    return this.http.get<Iproducto[]>(this.url + "/items");
   }
 
   //servicio agrega un producto
@@ -30,12 +30,12 @@ export class ProductosService {
 
   //servicio actualiza un producto
   actualizarProducto(producto: Iproducto) {
-    return this.http.put<Rproducto>(this.url + "editar_producto_id/" + producto.id, producto);
+    return this.http.put<Rproducto>(this.url + "editar_producto_id/" + producto.itemid, producto);
 
   }
   //servicio borrar un producto
   borrarProducto(producto: Iproducto) {
-    return this.http.delete<Rproducto>(this.url + "eliminar_producto/" + producto.id);
+    return this.http.delete<Rproducto>(this.url + "eliminar_producto/" + producto.itemid);
 
   }
 

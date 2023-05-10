@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { VentasServiceService } from '../../service/ventas.service.service';
 import { MatDialog } from '@angular/material/dialog';
-import { GestionarPrestamosComponent } from '../gestionar-prestamos';
 import { Iprestamos } from '../../interface/Iprestamos';
+import { GestionarPrestamosComponent } from '../gestionar-prestamos';
+
 
 
 
@@ -16,27 +17,34 @@ import { Iprestamos } from '../../interface/Iprestamos';
 })
 export class GestionVentasComponent implements OnInit {
 
+
   datosPrestamos: Iprestamos[] = [];
+
+
 
   constructor(private ventasService: VentasServiceService, public dialog: MatDialog) { }
 
-  openDialog() {
-    this.dialog.open(GestionarPrestamosComponent);
-  }
-
   ngOnInit(): void {
-
     this.prestamos(1);
+
   }
 
+  prestamos(id: number) {
 
-  prestamos(id:number) {
-
-    return this.ventasService.getPrestamos(1).subscribe((datos) => {
+    return this.ventasService.getPrestamoId(1).subscribe((datos) => {
       this.datosPrestamos = datos;
       console.log(this.datosPrestamos)
 
     })
   }
+
+
+  //Modal
+  openDialog(): void {
+    this.dialog.open(GestionarPrestamosComponent);
+  }
+
+
+
 
 }

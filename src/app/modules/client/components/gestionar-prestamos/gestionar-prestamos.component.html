@@ -1,33 +1,22 @@
 <!--FORMULARIO MODAL-->
 
-<h1 mat-dialog-title>PRESTAMO A SOLICITAR</h1>
+<h1 mat-dialog-title>HOLA </h1>
 <div mat-dialog-content>
-    <form class="example-form">
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Usuario</mat-label>
-            <input type="text" placeholder="Selecciona uno" aria-label="Producto" matInput [formControl]="myControl"
-                name="nombre" [matAutocomplete]="auto">
-            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                <mat-option *ngFor="let option of filteredOptions | async" [value]="option.item">
-                    {{option.item}}
-                </mat-option>
-            </mat-autocomplete>
-        </mat-form-field>
-    </form>
-    <form class="example-form">
-        <mat-form-field class="example-full-width" appearance="fill">
+    <p>Selecciona el articulo a prestar</p>
+    <form class="example-form" appearance="fill">
+        <mat-form-field class="example-full-width">
             <mat-label>Producto</mat-label>
             <input type="text" placeholder="Selecciona uno" aria-label="Producto" matInput [formControl]="myControl"
                 name="nombre" [matAutocomplete]="auto">
             <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                <mat-option *ngFor="let option of filteredOptions | async" [value]="option.item">
-                    {{option.item}}
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option.descripcion">
+                    {{option.descripcion}}
                 </mat-option>
             </mat-autocomplete>
         </mat-form-field>
     </form>
 </div>
 <div mat-dialog-actions>
-    <button mat-button mat-dialog-close>Close</button>
+    <button mat-button [mat-dialog-close]>Close</button>
     <button mat-button [mat-dialog-close]="myControl.value" cdkFocusInitial (click)="Ok()">Ok</button>
 </div>

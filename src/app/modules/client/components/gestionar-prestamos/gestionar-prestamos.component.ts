@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
-import { FormControl } from '@angular/forms';
-import { Iventas } from '../../interface/Iventas';
-import { VentasServiceService } from '../../service/ventas.service.service';
-import { Iprestamos } from '../../interface/Iprestamos';
+import { Iproducto } from '../../interface/Iproductos';
+import { ProductosService } from '../../service/productos.service';
+
+
 
 
 
@@ -18,45 +19,50 @@ import { Iprestamos } from '../../interface/Iprestamos';
 export class GestionarPrestamosComponent implements OnInit {
 
   myControl = new FormControl('');
-  opcionesPrestamos: Iprestamos[] = [];
+  opcionesPrestamos: Iproducto[] = [];
 
 
   // @ts-ignore
-  filteredOptions: Observable<Iprestamos[]>;
+  filteredOptions: Observable<Iproducto[]>;
 
 
 
-  constructor(public dialog: MatDialog, private ventasService: VentasServiceService) { }
+  constructor(private productosService: ProductosService, public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.prestamos();
+
+    this.articulos();
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value || '')),
     );
 
-
   }
-
-  private _filter(value: string): Iprestamos[] {
+  private _filter(value: string): Iproducto[] {
     const filtervalue = value.toLowerCase();
 
-    return this.opcionesPrestamos.filter(option => option.item.toLocaleString(filtervalue));
+    return this.opcionesPrestamos.filter(option => option.descripcion);
   }
 
-
-  prestamos() {
-    return this.ventasService.getPrestamos(1).subscribe((datos) => {
+  articulos() {
+    return this.productosService.getProductos().subscribe((datos) => {
       this.opcionesPrestamos = datos;
+      console.log(this.opcionesPrestamos)
     })
   }
-
 
   Ok() {
 
     console.log(this.myControl.value)
 
   }
+
+
+
+
+
+
+
 
 
 }

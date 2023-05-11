@@ -41,6 +41,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     HttpClientModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
+    MatDialogModule
 
 
   ],

@@ -7,7 +7,7 @@ export interface Iproducto {
 }
 
 export class Iproducto {
-    temid: number = 0;
+    itemid: number = 0;
     item: string = "";
     descripcion: string = "";
     tipo: string = "";

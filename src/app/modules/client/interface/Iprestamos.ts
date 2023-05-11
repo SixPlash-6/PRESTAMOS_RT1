@@ -1,19 +1,19 @@
 export interface Iprestamos {
-    solicitudId: number,
-    usuario: number,
-    item: number,
+    solicitud: number,
+    usuario: string,
+    item: string,
     fecha: Date | null,
-    estado: number,
+    estado: string,
     observacion: string,
 
 }
 
 export class Iprestamos {
     solicitud: number = 0;
-    usuario: number = 0;
-    item: number = 0;
+    usuario: string = "";
+    item: string = "";
     fecha: Date | null = null;
-    estado: number = 0;
+    estado: string = "";
     observacion: string = "";
 
 

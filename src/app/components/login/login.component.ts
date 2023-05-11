@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
       console.log(this.perfil)
       if (this.perfil.status == "ok") {
         localStorage.setItem("token", this.perfil.token)
+        localStorage.setItem("userId", this.perfil.userId.toString())
 
         if (this.perfil.Perfil === 2) {
           this.router.navigate(["client"]);

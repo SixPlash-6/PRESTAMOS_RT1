@@ -19,21 +19,21 @@ export class GestionVentasComponent implements OnInit {
   datosPrestamos: Iprestamos[] = [];
 
   activo = false;
-  datosUsuario: string = "";
+  datosUsuario = {} as Iprestamos;
 
   constructor(private ventasService: VentasServiceService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.prestamos(2);
+    this.prestamos();
 
   }
 
-  prestamos(id: number) {
-
-    return this.ventasService.getPrestamoId(2).subscribe((datos) => {
+  prestamos() {
+    const userid = Number(localStorage.getItem("userId"))
+    return this.ventasService.getPrestamoId(userid).subscribe((datos) => {
       this.datosPrestamos = datos;
       console.log(this.datosPrestamos)
-      this.datosUsuario = datos[0].usuario;
+      this.datosUsuario = datos[0];
 
 
     })

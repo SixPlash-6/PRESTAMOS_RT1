@@ -28,8 +28,8 @@ export class VentasServiceService {
     return this.http.post<Ilogin>(this.url + "/Login", { usuario: user, password: password })
   }
 
-  insertarSolicitud(solicitud: Isolicitud) {
-    return this.http.post<Rsolicitud[]>(this.url + "/insertar/solicitud", solicitud)
+  insertarSolicitud(solicitud: Pick<Isolicitud, "itemId" | "userId">) {
+    return this.http.post<Rsolicitud>(this.url + "/insertar/solicitud", solicitud)
   }
 
 }

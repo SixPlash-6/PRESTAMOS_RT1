@@ -1,15 +1,15 @@
 <!--FORMULARIO MODAL-->
 
-<h1 mat-dialog-title>HOLA {{datosUsuario}}</h1>
+<h1 mat-dialog-title>Hola {{datosUsuario.usuario}}</h1>
 <div mat-dialog-content>
-    <p>Selecciona el articulo a prestar</p>
+    <p>Selecciona un articulo a prestar</p>
     <form class="example-form" appearance="fill">
         <mat-form-field class="example-full-width">
             <mat-label>Producto</mat-label>
             <input type="text" placeholder="Selecciona uno" aria-label="Producto" matInput [formControl]="myControl"
                 name="nombre" [matAutocomplete]="auto">
-            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                <mat-option *ngFor="let option of filteredOptions | async" [value]="option.descripcion">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayLabelFn">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                     {{option.descripcion}}
                 </mat-option>
             </mat-autocomplete>
